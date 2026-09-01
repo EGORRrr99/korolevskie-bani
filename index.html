@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
 <title>Королевские бани — премиальная банная резиденция</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,86 +19,81 @@ input,textarea,select{font-family:inherit;font-size:inherit}
 /* HEADER */
 .header{position:fixed;top:0;left:0;right:0;z-index:100;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;background:transparent;transition:.3s}
 .header.scrolled{background:rgba(11,11,14,.95);backdrop-filter:blur(16px)}
-
 .logo{display:flex;align-items:center;gap:8px}
 .logo svg{width:42px;height:42px;flex-shrink:0}
-.logo-text{font-size:9px;font-weight:700;letter-spacing:.12em;color:#d4b96a;text-transform:uppercase;line-height:1.15}
-.logo-text span{display:block}
-
-.header-right{display:flex;align-items:center;gap:10px}
-.header-right a{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.06);color:#d4b96a;font-size:14px}
+.logo-t{font-size:9px;font-weight:700;letter-spacing:.12em;color:#d4b96a;text-transform:uppercase;line-height:1.15}
+.logo-t span{display:block}
+.hdr-r{display:flex;align-items:center;gap:10px}
+.hdr-r a{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.06);color:#d4b96a;font-size:14px}
 .hamburger{width:34px;height:34px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;cursor:pointer}
 .hamburger span{width:20px;height:2px;background:#e5e0d8;border-radius:1px;transition:.3s}
 .hamburger.active span:nth-child(1){transform:translateY(6px)rotate(45deg)}
 .hamburger.active span:nth-child(2){opacity:0}
 .hamburger.active span:nth-child(3){transform:translateY(-6px)rotate(-45deg)}
-
-.mobile-menu{position:fixed;top:0;right:-100%;width:100%;height:100vh;background:rgba(11,11,14,.98);backdrop-filter:blur(24px);z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:right .4s}
-.mobile-menu.open{right:0}
-.mobile-menu a{font-size:22px;font-weight:600;color:rgba(229,224,216,.8);letter-spacing:.06em}
-.mobile-menu a:hover{color:#d4b96a}
+.mm{position:fixed;top:0;right:-100%;width:100%;height:100vh;background:rgba(11,11,14,.98);backdrop-filter:blur(24px);z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:right .4s}
+.mm.open{right:0}
+.mm a{font-size:22px;font-weight:600;color:rgba(229,224,216,.8);letter-spacing:.06em}
+.mm a:hover{color:#d4b96a}
 
 /* HERO */
-.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:flex-end;overflow:hidden}
+.hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:flex-end;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover}
-.hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,11,14,.25)0%,rgba(11,11,14,.1)30%,rgba(11,11,14,.6)60%,rgba(11,11,14,.9)100%)}
-.hero-inner{position:relative;z-index:2;padding:0 16px 40px;max-width:500px;width:100%}
-.hero h1{font-size:36px;font-weight:800;letter-spacing:.1em;color:#e5e0d8;text-transform:uppercase;line-height:1.1;margin-bottom:10px;font-family:'Montserrat',sans-serif}
+.hero-sh{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,11,14,.25)0%,rgba(11,11,14,.1)30%,rgba(11,11,14,.6)60%,rgba(11,11,14,.9)100%)}
+.hero-in{position:relative;z-index:2;padding:0 20px 40px;width:100%}
+.hero h1{font-size:34px;font-weight:800;letter-spacing:.08em;color:#e5e0d8;text-transform:uppercase;line-height:1.1;margin-bottom:8px;font-family:'Montserrat',sans-serif}
 .hero h1 .gl{color:#d4b96a}
-.hero p{font-size:13px;color:rgba(229,224,216,.6);font-weight:300;margin-bottom:24px;line-height:1.5;max-width:400px}
+.hero p{font-size:13px;color:rgba(229,224,216,.55);font-weight:300;margin-bottom:22px;line-height:1.5;max-width:360px}
 .hero-adv{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
 .hero-adv .ha{display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(229,224,216,.7)}
 .hero-adv .ha .ic{width:26px;height:26px;border-radius:50%;background:rgba(212,185,106,.1);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;color:#d4b96a}
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 44px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:3px;transition:all .3s;font-family:'Montserrat',sans-serif}
-.btn-gold{background:linear-gradient(135deg,#d4b96a,#b8994e);color:#0b0b0e;box-shadow:0 4px 16px rgba(212,185,106,.25)}
-.btn-gold:hover{filter:brightness(1.08);transform:translateY(-2px);box-shadow:0 6px 24px rgba(212,185,106,.35)}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.2);color:#e5e0d8}
-.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:#d4b96a}
+.btn-g{background:linear-gradient(135deg,#d4b96a,#b8994e);color:#0b0b0e;box-shadow:0 4px 16px rgba(212,185,106,.25)}
+.btn-g:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.btn-gh{background:transparent;border:1px solid rgba(255,255,255,.2);color:#e5e0d8}
+.btn-gh:hover{background:rgba(255,255,255,.06);border-color:#d4b96a}
+.btn-bl{background:#0b0b0e;color:#d4b96a;border:2px solid #0b0b0e}
+.btn-bl:hover{transform:translateY(-2px)}
 
 /* SECTIONS */
-.section{padding:56px 16px;max-width:500px;margin:0 auto}
-.section-tag{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#d4b96a;margin-bottom:10px;font-family:'Montserrat',sans-serif}
-.section h2{font-size:26px;font-weight:600;letter-spacing:.02em;margin-bottom:8px;color:#e5e0d8;font-family:'Montserrat',sans-serif}
-.section h2.gold{color:#d4b96a}
-.section-desc{font-size:13px;color:rgba(229,224,216,.5);font-weight:300;margin-bottom:28px;line-height:1.6}
+.sec{padding:56px 20px;max-width:480px;margin:0 auto}
+.st{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#d4b96a;margin-bottom:10px;font-family:'Montserrat',sans-serif}
+.sec h2{font-size:26px;font-weight:600;letter-spacing:.02em;margin-bottom:8px;color:#e5e0d8;font-family:'Montserrat',sans-serif}
+.sd{font-size:13px;color:rgba(229,224,216,.5);font-weight:300;margin-bottom:28px;line-height:1.6}
 
 /* SERVICES */
-.service-card{display:flex;background:#141417;border-radius:10px;overflow:hidden;margin-bottom:14px;border:1px solid rgba(255,255,255,.04)}
-.service-card .sc-text{flex:1;padding:20px 16px;display:flex;flex-direction:column;justify-content:center}
-.service-card .sc-tag{font-size:8px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#d4b96a;margin-bottom:3px}
-.service-card h3{font-size:15px;font-weight:600;letter-spacing:.02em;margin-bottom:3px;color:#e5e0d8;font-family:'Montserrat',sans-serif}
-.service-card p{font-size:11px;color:rgba(229,224,216,.5);font-weight:300;line-height:1.5}
-.service-card .sc-img{width:140px;flex-shrink:0;overflow:hidden}
-.service-card .sc-img img{width:100%;height:100%;object-fit:cover}
+.sc{display:flex;background:#141417;border-radius:10px;overflow:hidden;margin-bottom:14px;border:1px solid rgba(255,255,255,.04)}
+.sc-t{flex:1;padding:20px 16px;display:flex;flex-direction:column;justify-content:center}
+.sc-t .stg{font-size:8px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#d4b96a;margin-bottom:3px}
+.sc-t h3{font-size:15px;font-weight:600;letter-spacing:.02em;margin-bottom:3px;color:#e5e0d8;font-family:'Montserrat',sans-serif}
+.sc-t p{font-size:11px;color:rgba(229,224,216,.5);font-weight:300;line-height:1.5}
+.sc-i{width:140px;flex-shrink:0;overflow:hidden}
+.sc-i img{width:100%;height:100%;object-fit:cover}
 
 /* ABOUT */
-.about-grid img{width:100%;border-radius:10px;margin-bottom:20px;aspect-ratio:16/10;object-fit:cover}
-.about-grid p{font-size:13px;color:rgba(229,224,216,.6);font-weight:300;line-height:1.7;margin-bottom:20px}
+.ab img{width:100%;border-radius:10px;margin-bottom:20px;aspect-ratio:16/10;object-fit:cover}
+.ab p{font-size:13px;color:rgba(229,224,216,.6);font-weight:300;line-height:1.7;margin-bottom:20px}
 
 /* ADVANTAGES */
-.adv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.adv-item{background:#141417;border-radius:8px;padding:18px 14px;text-align:center;border:1px solid rgba(255,255,255,.04)}
-.adv-item .ai{font-size:24px;margin-bottom:8px}
-.adv-item h4{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px;color:#e5e0d8;font-family:'Montserrat',sans-serif}
-.adv-item p{font-size:10px;color:rgba(229,224,216,.4);font-weight:300}
+.ag{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.ai{background:#141417;border-radius:8px;padding:18px 12px;text-align:center;border:1px solid rgba(255,255,255,.04)}
+.ai .aic{font-size:24px;margin-bottom:6px}
+.ai h4{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px;color:#e5e0d8;font-family:'Montserrat',sans-serif}
+.ai p{font-size:10px;color:rgba(229,224,216,.4);font-weight:300}
+.ag .ai:last-child{grid-column:1/3}
 
 /* GALLERY */
-.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:20px}
-.gallery-grid figure{overflow:hidden;border-radius:6px;aspect-ratio:3/4}
-.gallery-grid figure:first-child{grid-column:1/2;grid-row:1/3}
-.gallery-grid img{width:100%;height:100%;object-fit:cover}
-.gallery-grid figcaption{display:none}
+.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+.gg figure{overflow:hidden;border-radius:6px;aspect-ratio:3/4}
+.gg img{width:100%;height:100%;object-fit:cover}
 
 /* CTA */
-.cta{background:linear-gradient(135deg,#d4b96a,#c4a85a);padding:48px 16px;text-align:center;margin:0 auto;max-width:500px;border-radius:12px}
+.cta{background:linear-gradient(135deg,#d4b96a,#c4a85a);padding:48px 20px;text-align:center;margin:0 auto;max-width:480px;border-radius:12px}
 .cta h2{color:#0b0b0e;font-size:24px;font-weight:800;letter-spacing:.04em;margin-bottom:6px;font-family:'Montserrat',sans-serif}
 .cta p{color:rgba(11,11,14,.6);font-size:13px;font-weight:400;margin-bottom:24px}
-.cta .btn{background:#0b0b0e;color:#d4b96a;border:2px solid #0b0b0e}
-.cta .btn:hover{background:#0b0b0e;color:#d4b96a;transform:translateY(-2px)}
 
 /* CONTACTS */
-.contacts{max-width:500px;margin:0 auto;padding:40px 16px}
+.contacts{max-width:480px;margin:0 auto;padding:40px 20px}
 .contacts .ct{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
 .contacts .ct .ci{width:38px;height:38px;border-radius:50%;background:rgba(212,185,106,.08);display:flex;align-items:center;justify-content:center;font-size:14px;color:#d4b96a;flex-shrink:0}
 .contacts .ct h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(229,224,216,.4);margin-bottom:2px;font-family:'Montserrat',sans-serif}
@@ -108,35 +103,35 @@ input,textarea,select{font-family:inherit;font-size:inherit}
 .social a{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(229,224,216,.5);font-size:13px}
 
 /* FORM */
-.form-wrap{background:#141417;border:1px solid rgba(255,255,255,.04);border-radius:10px;padding:24px 20px;margin:0 auto;max-width:500px}
-.form-wrap h3{font-size:18px;font-weight:600;text-align:center;margin-bottom:4px;font-family:'Montserrat',sans-serif}
-.form-wrap .f-sub{font-size:11px;color:rgba(229,224,216,.4);text-align:center;margin-bottom:20px;font-weight:300}
-.form-grid{display:grid;gap:10px}
-.form-grid label{display:grid;gap:3px;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,224,216,.4)}
-.form-grid input,.form-grid select,.form-grid textarea{padding:11px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:4px;color:#e5e0d8;font-size:13px;outline:none;width:100%}
-.form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{border-color:rgba(212,185,106,.3)}
-.form-grid textarea{resize:vertical;min-height:60px}
+.fw{background:#141417;border:1px solid rgba(255,255,255,.04);border-radius:10px;padding:24px 20px;margin:0 auto;max-width:480px}
+.fw h3{font-size:18px;font-weight:600;text-align:center;margin-bottom:4px;font-family:'Montserrat',sans-serif}
+.fw .fs{font-size:11px;color:rgba(229,224,216,.4);text-align:center;margin-bottom:20px;font-weight:300}
+.fg{display:grid;gap:10px}
+.fg label{display:grid;gap:3px;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,224,216,.4)}
+.fg input,.fg select,.fg textarea{padding:11px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:4px;color:#e5e0d8;font-size:13px;outline:none;width:100%}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(212,185,106,.3)}
+.fg textarea{resize:vertical;min-height:60px}
 
 /* FOOTER */
-.footer{text-align:center;padding:24px 16px;font-size:10px;color:rgba(229,224,216,.3);font-weight:300}
+.ft{text-align:center;padding:24px 20px;font-size:10px;color:rgba(229,224,216,.3);font-weight:300}
 
 /* MODAL */
-.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(11,11,14,.9);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .3s}
-.modal-overlay.active{display:flex;opacity:1}
-.modal{background:#141417;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;border-radius:10px;position:relative;border:1px solid rgba(255,255,255,.04);transform:scale(.97);transition:transform .3s}
-.modal-overlay.active .modal{transform:scale(1)}
-.modal-close{position:absolute;top:12px;right:12px;z-index:10;width:32px;height:32px;border-radius:50%;background:rgba(11,11,14,.7);color:#e5e0d8;font-size:16px;display:flex;align-items:center;justify-content:center}
-.modal-close:hover{background:#d4b96a;color:#0b0b0e}
-.modal-img{aspect-ratio:16/9;overflow:hidden;background:rgba(255,255,255,.02)}
-.modal-img img{width:100%;height:100%;object-fit:cover}
-.modal-body{padding:20px}
-.modal-body .tag{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#d4b96a;margin-bottom:4px}
-.modal-body h2{font-size:20px;font-weight:600;margin-bottom:6px;font-family:'Montserrat',sans-serif}
-.modal-body p{font-size:13px;color:rgba(229,224,216,.5);font-weight:300;line-height:1.7;margin-bottom:14px}
-.modal-body ul{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;margin-bottom:16px}
-.modal-body ul li{font-size:12px;color:rgba(229,224,216,.7);display:flex;align-items:center;gap:6px}
-.modal-body ul li::before{content:'✓';color:#d4b96a}
-.modal .btn{width:100%;padding:14px;font-size:12px}
+.mo{position:fixed;inset:0;z-index:200;background:rgba(11,11,14,.9);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .3s}
+.mo.active{display:flex;opacity:1}
+.m{background:#141417;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;border-radius:10px;position:relative;border:1px solid rgba(255,255,255,.04);transform:scale(.97);transition:transform .3s}
+.mo.active .m{transform:scale(1)}
+.mc{position:absolute;top:12px;right:12px;z-index:10;width:32px;height:32px;border-radius:50%;background:rgba(11,11,14,.7);color:#e5e0d8;font-size:16px;display:flex;align-items:center;justify-content:center}
+.mc:hover{background:#d4b96a;color:#0b0b0e}
+.mi{aspect-ratio:16/9;overflow:hidden;background:rgba(255,255,255,.02)}
+.mi img{width:100%;height:100%;object-fit:cover}
+.mb{padding:20px}
+.mb .tag{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#d4b96a;margin-bottom:4px}
+.mb h2{font-size:20px;font-weight:600;margin-bottom:6px;font-family:'Montserrat',sans-serif}
+.mb p{font-size:13px;color:rgba(229,224,216,.5);font-weight:300;line-height:1.7;margin-bottom:14px}
+.mb ul{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;margin-bottom:16px}
+.mb ul li{font-size:12px;color:rgba(229,224,216,.7);display:flex;align-items:center;gap:6px}
+.mb ul li::before{content:'\2713';color:#d4b96a}
+.m .btn{width:100%;padding:14px;font-size:12px}
 
 /* ANIM */
 .rv{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
@@ -156,27 +151,27 @@ input,textarea,select{font-family:inherit;font-size:inherit}
 <path d="M38 80L47 76L50 83L53 76L62 80" fill="#c4a860" opacity=".8"/>
 <text x="41" y="73" font-family="Montserrat,sans-serif" font-size="26" font-weight="800" fill="#0b0b0e">Б</text>
 </svg>
-<div class="logo-text"><span>Королевские</span><span>бани</span></div>
+<div class="logo-t"><span>Королевские</span><span>бани</span></div>
 </div>
-<div class="header-right">
+<div class="hdr-r">
 <a href="tel:+79141594441" aria-label="Телефон">✆</a>
 <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </div>
 </header>
 
-<div class="mobile-menu" id="mobileMenu">
+<div class="mm" id="mobileMenu">
 <a href="#services">Наши услуги</a>
 <a href="#about">О нас</a>
 <a href="#advantages">Преимущества</a>
 <a href="#gallery">Галерея</a>
 <a href="#contacts">Контакты</a>
-<a href="#booking" class="btn btn-gold" style="margin-top:8px;font-size:12px;padding:14px 36px">Забронировать</a>
+<a href="#booking" class="btn btn-g" style="margin-top:8px;font-size:12px;padding:14px 36px">Забронировать</a>
 </div>
 
 <section class="hero">
-<div class="hero-bg"><img src="./assets/images/real-08.jpg" alt=""></div>
-<div class="hero-shade"></div>
-<div class="hero-inner">
+<div class="hero-bg"><img src="./assets/images/real-08.jpg" alt="Королевские бани"></div>
+<div class="hero-sh"></div>
+<div class="hero-in">
 <h1>Королевские <span class="gl">бани</span></h1>
 <p>Премиальная банная резиденция для вашего отдыха и здоровья</p>
 <div class="hero-adv">
@@ -184,119 +179,81 @@ input,textarea,select{font-family:inherit;font-size:inherit}
 <div class="ha"><div class="ic">✦</div>Здоровье и релакс</div>
 <div class="ha"><div class="ic">✓</div>Гарантия чистоты</div>
 </div>
-<a class="btn btn-gold" href="#booking">Забронировать</a>
+<a class="btn btn-g" href="#booking">Забронировать</a>
 </div>
 </section>
 
-<section class="section" id="services">
-<div class="section-tag">Наши услуги</div>
+<section class="sec" id="services">
+<div class="st">Наши услуги</div>
 <h2>Всё для идеального отдыха</h2>
-<p class="section-desc">Выберите формат и наслаждайтесь</p>
-
-<div class="service-card rv">
-<div class="sc-text">
-<div class="sc-tag">Традиции</div>
-<h3>Бани на дровах</h3>
-<p>От классики до премиум — настоящий жаркий пар для ценителей</p>
-</div>
-<div class="sc-img"><img src="./assets/images/real-10.jpg" alt="" loading="lazy"></div>
-</div>
-
-<div class="service-card rv">
-<div class="sc-text">
-<div class="sc-tag">Водная зона</div>
-<h3>Бассейны и купели</h3>
-<p>Чистая вода круглый год, контрастные купели и зона отдыха</p>
-</div>
-<div class="sc-img"><img src="./assets/images/real-12.jpg" alt="" loading="lazy"></div>
-</div>
-
-<div class="service-card rv">
-<div class="sc-text">
-<div class="sc-tag">Комфорт</div>
-<h3>Комнаты отдыха</h3>
-<p>Комфорт и уют для компании: камин, бильярд, караоке, чай</p>
-</div>
-<div class="sc-img"><img src="./assets/images/real-14.jpg" alt="" loading="lazy"></div>
-</div>
-
-<div class="service-card rv">
-<div class="sc-text">
-<div class="sc-tag">Дополнительно</div>
-<h3>Дополнительные услуги</h3>
-<p>Парение, веники, ароматерапия — всё для банного дня</p>
-</div>
-<div class="sc-img"><img src="./assets/images/real-16.jpg" alt="" loading="lazy"></div>
-</div>
+<p class="sd">Выберите формат и наслаждайтесь</p>
+<div class="sc rv"><div class="sc-t"><div class="stg">Традиции</div><h3>Бани на дровах</h3><p>От классики до премиум — настоящий жаркий пар для ценителей</p></div><div class="sc-i"><img src="./assets/images/real-10.jpg" alt="" loading="lazy"></div></div>
+<div class="sc rv"><div class="sc-t"><div class="stg">Водная зона</div><h3>Бассейны и купели</h3><p>Чистая вода круглый год, контрастные купели и зона отдыха</p></div><div class="sc-i"><img src="./assets/images/real-12.jpg" alt="" loading="lazy"></div></div>
+<div class="sc rv"><div class="sc-t"><div class="stg">Комфорт</div><h3>Комнаты отдыха</h3><p>Комфорт и уют для компании: камин, бильярд, караоке, чай</p></div><div class="sc-i"><img src="./assets/images/real-14.jpg" alt="" loading="lazy"></div></div>
+<div class="sc rv"><div class="sc-t"><div class="stg">Дополнительно</div><h3>Дополнительные услуги</h3><p>Парение, веники, ароматерапия — всё для банного дня</p></div><div class="sc-i"><img src="./assets/images/real-16.jpg" alt="" loading="lazy"></div></div>
 </section>
 
-<section class="section" id="about">
-<div class="section-tag">О нас</div>
+<section class="sec" id="about">
+<div class="st">О нас</div>
 <h2>Премиальный отдых для ценителей</h2>
-<div class="about-grid">
+<div class="ab">
 <img src="./assets/images/real-08.jpg" alt="" loading="lazy">
 <p>«Королевские бани» — это место, где традиции русской бани сочетаются с премиальным комфортом. Мы создали пространство для тех, кто ценит качество, уют и заботу о своём здоровье.</p>
-<a class="btn btn-ghost" href="#services">Узнать больше</a>
+<a class="btn btn-gh" href="#services">Узнать больше</a>
 </div>
 </section>
 
-<section class="section" id="advantages">
-<div class="section-tag">Наши преимущества</div>
+<section class="sec" id="advantages">
+<div class="st">Наши преимущества</div>
 <h2>Почему выбирают нас</h2>
-<p class="section-desc">Всё для вашего комфорта и безопасности</p>
-<div class="adv-grid">
-<div class="adv-item rv"><div class="ai">🪵</div><h4>Отборные материалы</h4><p>Натуральное дерево, ручная работа</p></div>
-<div class="adv-item rv"><div class="ai">🌡️</div><h4>Идеальный микроклимат</h4><p>Правильный пар, температура</p></div>
-<div class="adv-item rv"><div class="ai">🧼</div><h4>Чистота и гигиена</h4><p>Идеальная чистота в каждой зоне</p></div>
-<div class="adv-item rv"><div class="ai">👥</div><h4>Опытные специалисты</h4><p>Профессиональные пармейстеры</p></div>
+<p class="sd">Всё для вашего комфорта и безопасности</p>
+<div class="ag">
+<div class="ai rv"><div class="aic">🪵</div><h4>Отборные материалы</h4><p>Натуральное дерево, ручная работа</p></div>
+<div class="ai rv"><div class="aic">🌡️</div><h4>Идеальный микроклимат</h4><p>Правильный пар, температура</p></div>
+<div class="ai rv"><div class="aic">🧼</div><h4>Чистота и гигиена</h4><p>Идеальная чистота в каждой зоне</p></div>
+<div class="ai rv"><div class="aic">👥</div><h4>Опытные специалисты</h4><p>Профессиональные пармейстеры</p></div>
+<div class="ai rv"><div class="aic">🅿️</div><h4>Удобная парковка</h4><p>Бесплатная парковка для гостей</p></div>
 </div>
 </section>
 
-<section class="section" id="gallery">
-<div class="section-tag">Фотогалерея</div>
+<section class="sec" id="gallery">
+<div class="st">Фотогалерея</div>
 <h2>Атмосфера комплекса</h2>
-<p class="section-desc">Реальные фотографии наших зон отдыха</p>
-<div class="gallery-grid">
+<p class="sd">Реальные фотографии зон отдыха</p>
+<div class="gg">
 <figure><img src="./assets/images/real-12.jpg" alt="" loading="lazy"></figure>
 <figure><img src="./assets/images/real-14.jpg" alt="" loading="lazy"></figure>
 <figure><img src="./assets/images/real-10.jpg" alt="" loading="lazy"></figure>
 </div>
-<a class="btn btn-ghost" href="#services" style="width:100%;text-align:center">Смотреть все</a>
+<a class="btn btn-gh" href="#services" style="width:100%;text-align:center">Смотреть все</a>
 </section>
 
-<section class="section" style="padding-top:0">
+<section class="sec" style="padding-top:0">
 <div class="cta">
 <h2>Готовы отдохнуть<br>по-королевски?</h2>
 <p>Забронируйте удобное время и наслаждайтесь отдыхом</p>
-<a class="btn" href="#booking">Забронировать</a>
+<a class="btn btn-bl" href="#booking">Забронировать</a>
 </div>
 </section>
 
-<section class="section" id="booking">
-<div class="section-tag">Бронирование</div>
+<section class="sec" id="booking">
+<div class="st">Бронирование</div>
 <h2>Забронируйте отдых</h2>
-<p class="section-desc">Оставьте заявку — мы свяжемся для подтверждения</p>
-<div class="form-wrap" id="formContainer">
+<p class="sd">Оставьте заявку — мы свяжемся для подтверждения</p>
+<div class="fw" id="formContainer">
 <h3>Форма бронирования</h3>
-<p class="f-sub">Заполните данные — мы подберём лучший вариант</p>
-<form id="bookingForm" class="form-grid">
-<label>Объект
-<select id="bookObject" required>
-<option value="">Выберите объект</option>
-<option>Бани на дровах</option>
-<option>Бассейны и купели</option>
-<option>Комнаты отдыха</option>
-<option>Дополнительные услуги</option>
-</select></label>
-<label>Дата <input type="date" id="bookDate" required></label>
-<label>Время <input type="time" id="bookTime" value="14:00"></label>
-<label>Гости <input type="number" min="1" placeholder="Например, 6" required></label>
-<label>Имя <input type="text" placeholder="Ваше имя" required></label>
-<label>Телефон <input type="tel" placeholder="+7 (999) 999-99-99" required></label>
-<label>Комментарий <textarea placeholder="Пожелания, повод, вопросы"></textarea></label>
-<button class="btn btn-gold" type="submit" style="width:100%;margin-top:6px;padding:14px">Забронировать</button>
+<p class="fs">Заполните данные — мы подберём лучший вариант</p>
+<form id="bookingForm" class="fg">
+<label>Объект<select id="bookObject" required><option value="">Выберите объект</option><option>Бани на дровах</option><option>Бассейны и купели</option><option>Комнаты отдыха</option><option>Дополнительные услуги</option></select></label>
+<label>Дата<input type="date" id="bookDate" required></label>
+<label>Время<input type="time" id="bookTime" value="14:00"></label>
+<label>Гости<input type="number" min="1" placeholder="Например, 6" required></label>
+<label>Имя<input type="text" placeholder="Ваше имя" required></label>
+<label>Телефон<input type="tel" placeholder="+7 (999) 999-99-99" required></label>
+<label>Комментарий<textarea placeholder="Пожелания, повод, вопросы"></textarea></label>
+<button class="btn btn-g" type="submit" style="width:100%;margin-top:6px;padding:14px">Забронировать</button>
 </form>
-<div class="booking-success" id="bookingSuccess" style="display:none;text-align:center;padding:24px">
+<div class="bs" id="bookingSuccess" style="display:none;text-align:center;padding:24px">
 <div style="width:50px;height:50px;margin:0 auto 12px;border-radius:50%;border:2px solid #d4b96a;color:#d4b96a;font-size:24px;display:flex;align-items:center;justify-content:center">✓</div>
 <h4 style="font-size:18px;color:#d4b96a;margin-bottom:4px">Заявка отправлена</h4>
 <p style="color:rgba(229,224,216,.5);font-size:13px">Мы свяжемся с вами для подтверждения бронирования.</p>
@@ -305,15 +262,15 @@ input,textarea,select{font-family:inherit;font-size:inherit}
 </section>
 
 <section class="contacts" id="contacts">
-<div class="section-tag">Контакты</div>
-<h2 style="font-size:24px;font-weight:600;margin-bottom:20px">Как нас найти</h2>
+<div class="st">Контакты</div>
+<h2 style="font-size:24px;font-weight:600;margin-bottom:20px;font-family:'Montserrat',sans-serif">Как нас найти</h2>
 <div class="ct"><div class="ci">✆</div><div><h4>Телефон</h4><p><a href="tel:+79141594441">+7 (914) 159-44-41</a></p></div></div>
 <div class="ct"><div class="ci">📍</div><div><h4>Адрес</h4><p>г. Королёв, ул. Банная, 1</p></div></div>
 <div class="ct"><div class="ci">🕐</div><div><h4>Режим работы</h4><p>Ежедневно 10:00 – 23:00</p></div></div>
 <div class="ct"><div class="ci">✉</div><div><h4>Мессенджеры</h4><div class="social"><a href="#">📱</a><a href="#">📷</a><a href="#">💬</a></div></div></div>
 </section>
 
-<footer class="footer">
+<footer class="ft">
 <p>© 2026 Королевские бани. Премиальная банная резиденция.</p>
 </footer>
 
@@ -322,10 +279,9 @@ const h=document.getElementById('header');
 window.addEventListener('scroll',()=>h.classList.toggle('scrolled',window.scrollY>50));
 const hb=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu');
 hb.addEventListener('click',()=>{hb.classList.toggle('active');mm.classList.toggle('open');document.body.style.overflow=mm.classList.contains('open')?'hidden':''});
-document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{hb.classList.remove('active');mm.classList.remove('open');document.body.style.overflow=''}));
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vi')}),{threshold:.1});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-document.getElementById('bookingForm').addEventListener('submit',function(e){e.preventDefault();document.getElementById('formContainer').innerHTML=document.getElementById('bookingSuccess').innerHTML;document.getElementById('bookingSuccess').style.display='block'});
+document.querySelectorAll('.mm a').forEach(a=>a.addEventListener('click',()=>{hb.classList.remove('active');mm.classList.remove('open');document.body.style.overflow=''}));
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vi')}),{threshold:.1})document.querySelectorAll('.rv').forEach(el=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vi')}),{threshold:.1}).observe(el));
+document.getElementById('bookingForm').addEventListener('submit',function(e){e.preventDefault();document.getElementById('formContainer').querySelector('.fg').style.display='none';document.getElementById('bookingSuccess').style.display='block'});
 document.getElementById('bookDate').setAttribute('min',new Date().toISOString().split('T')[0]);
 </script>
 </body>
