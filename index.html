@@ -1,288 +1,204 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
-<title>Королевские бани — премиальная банная резиденция</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Montserrat',sans-serif;background:#0b0b0e;color:#e5e0d8;overflow-x:hidden}
-img{max-width:100%;display:block}
-a{text-decoration:none;color:inherit}
-button{cursor:pointer;border:none;background:none;font-family:inherit}
-input,textarea,select{font-family:inherit;font-size:inherit}
-
-/* HEADER */
-.header{position:fixed;top:0;left:0;right:0;z-index:100;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;background:transparent;transition:.3s}
-.header.scrolled{background:rgba(11,11,14,.95);backdrop-filter:blur(16px)}
-.logo{display:flex;align-items:center;gap:8px}
-.logo svg{width:42px;height:42px;flex-shrink:0}
-.logo-t{font-size:9px;font-weight:700;letter-spacing:.12em;color:#d4b96a;text-transform:uppercase;line-height:1.15}
-.logo-t span{display:block}
-.hdr-r{display:flex;align-items:center;gap:10px}
-.hdr-r a{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.06);color:#d4b96a;font-size:14px}
-.hamburger{width:34px;height:34px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;cursor:pointer}
-.hamburger span{width:20px;height:2px;background:#e5e0d8;border-radius:1px;transition:.3s}
-.hamburger.active span:nth-child(1){transform:translateY(6px)rotate(45deg)}
-.hamburger.active span:nth-child(2){opacity:0}
-.hamburger.active span:nth-child(3){transform:translateY(-6px)rotate(-45deg)}
-.mm{position:fixed;top:0;right:-100%;width:100%;height:100vh;background:rgba(11,11,14,.98);backdrop-filter:blur(24px);z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:right .4s}
-.mm.open{right:0}
-.mm a{font-size:22px;font-weight:600;color:rgba(229,224,216,.8);letter-spacing:.06em}
-.mm a:hover{color:#d4b96a}
-
-/* HERO */
-.hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover}
-.hero-sh{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,11,14,.25)0%,rgba(11,11,14,.1)30%,rgba(11,11,14,.6)60%,rgba(11,11,14,.9)100%)}
-.hero-in{position:relative;z-index:2;padding:0 20px 40px;width:100%}
-.hero h1{font-size:34px;font-weight:800;letter-spacing:.08em;color:#e5e0d8;text-transform:uppercase;line-height:1.1;margin-bottom:8px;font-family:'Montserrat',sans-serif}
-.hero h1 .gl{color:#d4b96a}
-.hero p{font-size:13px;color:rgba(229,224,216,.55);font-weight:300;margin-bottom:22px;line-height:1.5;max-width:360px}
-.hero-adv{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.hero-adv .ha{display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(229,224,216,.7)}
-.hero-adv .ha .ic{width:26px;height:26px;border-radius:50%;background:rgba(212,185,106,.1);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;color:#d4b96a}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 44px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:3px;transition:all .3s;font-family:'Montserrat',sans-serif}
-.btn-g{background:linear-gradient(135deg,#d4b96a,#b8994e);color:#0b0b0e;box-shadow:0 4px 16px rgba(212,185,106,.25)}
-.btn-g:hover{filter:brightness(1.08);transform:translateY(-2px)}
-.btn-gh{background:transparent;border:1px solid rgba(255,255,255,.2);color:#e5e0d8}
-.btn-gh:hover{background:rgba(255,255,255,.06);border-color:#d4b96a}
-.btn-bl{background:#0b0b0e;color:#d4b96a;border:2px solid #0b0b0e}
-.btn-bl:hover{transform:translateY(-2px)}
-
-/* SECTIONS */
-.sec{padding:56px 20px;max-width:480px;margin:0 auto}
-.st{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#d4b96a;margin-bottom:10px;font-family:'Montserrat',sans-serif}
-.sec h2{font-size:26px;font-weight:600;letter-spacing:.02em;margin-bottom:8px;color:#e5e0d8;font-family:'Montserrat',sans-serif}
-.sd{font-size:13px;color:rgba(229,224,216,.5);font-weight:300;margin-bottom:28px;line-height:1.6}
-
-/* SERVICES */
-.sc{display:flex;background:#141417;border-radius:10px;overflow:hidden;margin-bottom:14px;border:1px solid rgba(255,255,255,.04)}
-.sc-t{flex:1;padding:20px 16px;display:flex;flex-direction:column;justify-content:center}
-.sc-t .stg{font-size:8px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#d4b96a;margin-bottom:3px}
-.sc-t h3{font-size:15px;font-weight:600;letter-spacing:.02em;margin-bottom:3px;color:#e5e0d8;font-family:'Montserrat',sans-serif}
-.sc-t p{font-size:11px;color:rgba(229,224,216,.5);font-weight:300;line-height:1.5}
-.sc-i{width:140px;flex-shrink:0;overflow:hidden}
-.sc-i img{width:100%;height:100%;object-fit:cover}
-
-/* ABOUT */
-.ab img{width:100%;border-radius:10px;margin-bottom:20px;aspect-ratio:16/10;object-fit:cover}
-.ab p{font-size:13px;color:rgba(229,224,216,.6);font-weight:300;line-height:1.7;margin-bottom:20px}
-
-/* ADVANTAGES */
-.ag{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.ai{background:#141417;border-radius:8px;padding:18px 12px;text-align:center;border:1px solid rgba(255,255,255,.04)}
-.ai .aic{font-size:24px;margin-bottom:6px}
-.ai h4{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px;color:#e5e0d8;font-family:'Montserrat',sans-serif}
-.ai p{font-size:10px;color:rgba(229,224,216,.4);font-weight:300}
-.ag .ai:last-child{grid-column:1/3}
-
-/* GALLERY */
-.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
-.gg figure{overflow:hidden;border-radius:6px;aspect-ratio:3/4}
-.gg img{width:100%;height:100%;object-fit:cover}
-
-/* CTA */
-.cta{background:linear-gradient(135deg,#d4b96a,#c4a85a);padding:48px 20px;text-align:center;margin:0 auto;max-width:480px;border-radius:12px}
-.cta h2{color:#0b0b0e;font-size:24px;font-weight:800;letter-spacing:.04em;margin-bottom:6px;font-family:'Montserrat',sans-serif}
-.cta p{color:rgba(11,11,14,.6);font-size:13px;font-weight:400;margin-bottom:24px}
-
-/* CONTACTS */
-.contacts{max-width:480px;margin:0 auto;padding:40px 20px}
-.contacts .ct{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
-.contacts .ct .ci{width:38px;height:38px;border-radius:50%;background:rgba(212,185,106,.08);display:flex;align-items:center;justify-content:center;font-size:14px;color:#d4b96a;flex-shrink:0}
-.contacts .ct h4{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(229,224,216,.4);margin-bottom:2px;font-family:'Montserrat',sans-serif}
-.contacts .ct p{font-size:14px;font-weight:400;color:#e5e0d8}
-.contacts .ct a{color:#d4b96a}
-.social{display:flex;gap:10px;margin-top:6px}
-.social a{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(229,224,216,.5);font-size:13px}
-
-/* FORM */
-.fw{background:#141417;border:1px solid rgba(255,255,255,.04);border-radius:10px;padding:24px 20px;margin:0 auto;max-width:480px}
-.fw h3{font-size:18px;font-weight:600;text-align:center;margin-bottom:4px;font-family:'Montserrat',sans-serif}
-.fw .fs{font-size:11px;color:rgba(229,224,216,.4);text-align:center;margin-bottom:20px;font-weight:300}
-.fg{display:grid;gap:10px}
-.fg label{display:grid;gap:3px;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(229,224,216,.4)}
-.fg input,.fg select,.fg textarea{padding:11px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:4px;color:#e5e0d8;font-size:13px;outline:none;width:100%}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(212,185,106,.3)}
-.fg textarea{resize:vertical;min-height:60px}
-
-/* FOOTER */
-.ft{text-align:center;padding:24px 20px;font-size:10px;color:rgba(229,224,216,.3);font-weight:300}
-
-/* MODAL */
-.mo{position:fixed;inset:0;z-index:200;background:rgba(11,11,14,.9);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .3s}
-.mo.active{display:flex;opacity:1}
-.m{background:#141417;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;border-radius:10px;position:relative;border:1px solid rgba(255,255,255,.04);transform:scale(.97);transition:transform .3s}
-.mo.active .m{transform:scale(1)}
-.mc{position:absolute;top:12px;right:12px;z-index:10;width:32px;height:32px;border-radius:50%;background:rgba(11,11,14,.7);color:#e5e0d8;font-size:16px;display:flex;align-items:center;justify-content:center}
-.mc:hover{background:#d4b96a;color:#0b0b0e}
-.mi{aspect-ratio:16/9;overflow:hidden;background:rgba(255,255,255,.02)}
-.mi img{width:100%;height:100%;object-fit:cover}
-.mb{padding:20px}
-.mb .tag{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#d4b96a;margin-bottom:4px}
-.mb h2{font-size:20px;font-weight:600;margin-bottom:6px;font-family:'Montserrat',sans-serif}
-.mb p{font-size:13px;color:rgba(229,224,216,.5);font-weight:300;line-height:1.7;margin-bottom:14px}
-.mb ul{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;margin-bottom:16px}
-.mb ul li{font-size:12px;color:rgba(229,224,216,.7);display:flex;align-items:center;gap:6px}
-.mb ul li::before{content:'\2713';color:#d4b96a}
-.m .btn{width:100%;padding:14px;font-size:12px}
-
-/* ANIM */
-.rv{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
-.rv.vi{opacity:1;transform:translateY(0)}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Королевские бани — премиальная банная резиденция</title>
+  <meta name="description" content="Коммерческая концепция сайта «Королевские бани»: банные дома, зоны отдыха, бассейн, веранда и бронирование.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="Королевские бани">
+      <span class="brand-mark">♛</span>
+      <span>Королевские <b>бани</b></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Главное меню">
+      <a href="#objects">Объекты</a>
+      <a href="#gallery">Фотографии</a>
+      <a href="#prices">Цены</a>
+      <a href="#booking">Бронирование</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <button class="icon-button" type="button" data-menu-toggle aria-label="Открыть меню"><span></span><span></span></button>
+  </header>
 
-<header class="header" id="header">
-<div class="logo">
-<svg viewBox="0 0 100 100" fill="none" width="42" height="42">
-<path d="M20 68L15 35L30 45L50 30L70 45L85 35L80 68Z" fill="#d4b96a" opacity=".9"/>
-<circle cx="50" cy="28" r="3" fill="#d4b96a"/>
-<circle cx="35" cy="35" r="2.5" fill="#d4b96a"/>
-<circle cx="65" cy="35" r="2.5" fill="#d4b96a"/>
-<rect x="47" y="55" width="6" height="28" rx="2" fill="#b8994e"/>
-<path d="M38 80L47 76L50 83L53 76L62 80" fill="#c4a860" opacity=".8"/>
-<text x="41" y="73" font-family="Montserrat,sans-serif" font-size="26" font-weight="800" fill="#0b0b0e">Б</text>
-</svg>
-<div class="logo-t"><span>Королевские</span><span>бани</span></div>
-</div>
-<div class="hdr-r">
-<a href="tel:+79141594441" aria-label="Телефон">✆</a>
-<div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-</div>
-</header>
+  <nav class="mobile-nav" data-mobile-menu aria-label="Мобильное меню">
+    <a href="#objects">Объекты</a>
+    <a href="#gallery">Фотографии</a>
+    <a href="#prices">Цены</a>
+    <a href="#booking">Забронировать</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
 
-<div class="mm" id="mobileMenu">
-<a href="#services">Наши услуги</a>
-<a href="#about">О нас</a>
-<a href="#advantages">Преимущества</a>
-<a href="#gallery">Галерея</a>
-<a href="#contacts">Контакты</a>
-<a href="#booking" class="btn btn-g" style="margin-top:8px;font-size:12px;padding:14px 36px">Забронировать</a>
-</div>
+  <main id="top">
+    <section class="hero">
+      <img class="hero-photo" src="./assets/images/real-08.jpg" alt="Интерьер Королевских бань с деревянной отделкой">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Банная резиденция</p>
+        <h1>КОРОЛЕВСКИЕ БАНИ</h1>
+        <p class="hero-lead">Пространство для камерного отдыха, семейных праздников и вечеров в атмосфере тёплого дерева, пара и приватности.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#objects">Посмотреть объекты</a>
+          <a class="btn btn-ghost" href="#booking">Забронировать</a>
+        </div>
+      </div>
+    </section>
 
-<section class="hero">
-<div class="hero-bg"><img src="./assets/images/real-08.jpg" alt="Королевские бани"></div>
-<div class="hero-sh"></div>
-<div class="hero-in">
-<h1>Королевские <span class="gl">бани</span></h1>
-<p>Премиальная банная резиденция для вашего отдыха и здоровья</p>
-<div class="hero-adv">
-<div class="ha"><div class="ic">♛</div>Премиум качество</div>
-<div class="ha"><div class="ic">✦</div>Здоровье и релакс</div>
-<div class="ha"><div class="ic">✓</div>Гарантия чистоты</div>
-</div>
-<a class="btn btn-g" href="#booking">Забронировать</a>
-</div>
-</section>
+    <section class="intro section">
+      <div class="section-head">
+        <p class="eyebrow">Концепция отдыха</p>
+        <h2>Премиальная подача без лишнего шума</h2>
+        <p>Сайт показывает реальные интерьеры и зоны комплекса, оставляя коммерческие детали прозрачными: всё, что требует подтверждения владельца, отмечено как данные для уточнения.</p>
+      </div>
+      <div class="feature-grid">
+        <article><span>01</span><h3>Дерево и ручная отделка</h3><p>Акцент на фактуре, тёплом свете и деталях интерьера.</p></article>
+        <article><span>02</span><h3>Для компаний</h3><p>Карточки объектов сразу показывают формат, вместимость и ключевые удобства.</p></article>
+        <article><span>03</span><h3>Готово к публикации</h3><p>Все фото лежат в проекте, пути относительные, сайт работает как статический GitHub Pages.</p></article>
+      </div>
+    </section>
 
-<section class="sec" id="services">
-<div class="st">Наши услуги</div>
-<h2>Всё для идеального отдыха</h2>
-<p class="sd">Выберите формат и наслаждайтесь</p>
-<div class="sc rv"><div class="sc-t"><div class="stg">Традиции</div><h3>Бани на дровах</h3><p>От классики до премиум — настоящий жаркий пар для ценителей</p></div><div class="sc-i"><img src="./assets/images/real-10.jpg" alt="" loading="lazy"></div></div>
-<div class="sc rv"><div class="sc-t"><div class="stg">Водная зона</div><h3>Бассейны и купели</h3><p>Чистая вода круглый год, контрастные купели и зона отдыха</p></div><div class="sc-i"><img src="./assets/images/real-12.jpg" alt="" loading="lazy"></div></div>
-<div class="sc rv"><div class="sc-t"><div class="stg">Комфорт</div><h3>Комнаты отдыха</h3><p>Комфорт и уют для компании: камин, бильярд, караоке, чай</p></div><div class="sc-i"><img src="./assets/images/real-14.jpg" alt="" loading="lazy"></div></div>
-<div class="sc rv"><div class="sc-t"><div class="stg">Дополнительно</div><h3>Дополнительные услуги</h3><p>Парение, веники, ароматерапия — всё для банного дня</p></div><div class="sc-i"><img src="./assets/images/real-16.jpg" alt="" loading="lazy"></div></div>
-</section>
+    <section class="section objects" id="objects">
+      <div class="section-head">
+        <p class="eyebrow">Каталог</p>
+        <h2>Объекты комплекса</h2>
+        <p>Фильтры, подробные карточки и быстрый переход к бронированию.</p>
+      </div>
+      <div class="filter-bar" role="list" aria-label="Фильтр объектов">
+        <button class="filter active" type="button" data-filter="all">Все</button>
+        <button class="filter" type="button" data-filter="banya">Бани</button>
+        <button class="filter" type="button" data-filter="vip">VIP</button>
+        <button class="filter" type="button" data-filter="rest">Отдых</button>
+      </div>
+      <div class="object-grid">
+        <article class="object-card" data-category="banya" data-object="large">
+          <img src="./assets/images/real-10.jpg" alt="Двухэтажная зона отдыха Королевских бань">
+          <div class="object-body">
+            <p class="tag">Баня на дровах</p>
+            <h3>Большая двухэтажная баня</h3>
+            <p class="meta">До 15 гостей · вместимость уточнить</p>
+            <div class="chips"><span>Парная</span><span>Комната отдыха</span><span>Караоке</span></div>
+            <p class="price">от 2 000 ₽/час</p>
+            <div class="card-actions"><button class="btn btn-small" data-details="large">Подробнее</button><a class="btn btn-small btn-primary" href="#booking" data-book="Большая двухэтажная баня">Забронировать</a></div>
+          </div>
+        </article>
+        <article class="object-card" data-category="vip" data-object="vip">
+          <img src="./assets/images/real-12.jpg" alt="Бильярдная зона Королевских бань">
+          <div class="object-body">
+            <p class="tag">VIP-формат</p>
+            <h3>VIP-баня с бассейном</h3>
+            <p class="meta">До 15 гостей · формат уточнить</p>
+            <div class="chips"><span>Бассейн</span><span>Купель</span><span>Зона отдыха</span></div>
+            <p class="price">от 2 500 ₽/час</p>
+            <div class="card-actions"><button class="btn btn-small" data-details="vip">Подробнее</button><a class="btn btn-small btn-primary" href="#booking" data-book="VIP-баня с бассейном">Забронировать</a></div>
+          </div>
+        </article>
+        <article class="object-card" data-category="banya" data-object="medium">
+          <img src="./assets/images/real-14.jpg" alt="Деревянная зона банного комплекса">
+          <div class="object-body">
+            <p class="tag">Камерный формат</p>
+            <h3>Средняя одноэтажная баня</h3>
+            <p class="meta">Вместимость уточнить</p>
+            <div class="chips"><span>Парная</span><span>Душ</span><span>Чайная зона</span></div>
+            <p class="price">от 1 000 ₽/час</p>
+            <div class="card-actions"><button class="btn btn-small" data-details="medium">Подробнее</button><a class="btn btn-small btn-primary" href="#booking" data-book="Средняя одноэтажная баня">Забронировать</a></div>
+          </div>
+        </article>
+        <article class="object-card" data-category="rest" data-object="veranda">
+          <img src="./assets/images/real-16.jpg" alt="Зона отдыха с деревянной отделкой">
+          <div class="object-body">
+            <p class="tag">Зона отдыха</p>
+            <h3>Веранда и мангальная зона</h3>
+            <p class="meta">Параметры уточнить</p>
+            <div class="chips"><span>Мангал</span><span>Стол</span><span>Для компании</span></div>
+            <p class="price">стоимость уточнить</p>
+            <div class="card-actions"><button class="btn btn-small" data-details="veranda">Подробнее</button><a class="btn btn-small btn-primary" href="#booking" data-book="Веранда и мангальная зона">Забронировать</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
 
-<section class="sec" id="about">
-<div class="st">О нас</div>
-<h2>Премиальный отдых для ценителей</h2>
-<div class="ab">
-<img src="./assets/images/real-08.jpg" alt="" loading="lazy">
-<p>«Королевские бани» — это место, где традиции русской бани сочетаются с премиальным комфортом. Мы создали пространство для тех, кто ценит качество, уют и заботу о своём здоровье.</p>
-<a class="btn btn-gh" href="#services">Узнать больше</a>
-</div>
-</section>
+    <section class="section gallery" id="gallery">
+      <div class="section-head">
+        <p class="eyebrow">Реальные фотографии</p>
+        <h2>Атмосфера комплекса</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="wide"><img src="./assets/images/real-08.jpg" alt="Зал отдыха Королевских бань"><figcaption>Главный зал отдыха</figcaption></figure>
+        <figure><img src="./assets/images/real-10.jpg" alt="Второй этаж банного комплекса"><figcaption>Двухэтажное пространство</figcaption></figure>
+        <figure><img src="./assets/images/real-12.jpg" alt="Бильярдная зона"><figcaption>Бильярдная зона</figcaption></figure>
+        <figure><img src="./assets/images/real-14.jpg" alt="Детали деревянной отделки"><figcaption>Ручная деревянная отделка</figcaption></figure>
+      </div>
+    </section>
 
-<section class="sec" id="advantages">
-<div class="st">Наши преимущества</div>
-<h2>Почему выбирают нас</h2>
-<p class="sd">Всё для вашего комфорта и безопасности</p>
-<div class="ag">
-<div class="ai rv"><div class="aic">🪵</div><h4>Отборные материалы</h4><p>Натуральное дерево, ручная работа</p></div>
-<div class="ai rv"><div class="aic">🌡️</div><h4>Идеальный микроклимат</h4><p>Правильный пар, температура</p></div>
-<div class="ai rv"><div class="aic">🧼</div><h4>Чистота и гигиена</h4><p>Идеальная чистота в каждой зоне</p></div>
-<div class="ai rv"><div class="aic">👥</div><h4>Опытные специалисты</h4><p>Профессиональные пармейстеры</p></div>
-<div class="ai rv"><div class="aic">🅿️</div><h4>Удобная парковка</h4><p>Бесплатная парковка для гостей</p></div>
-</div>
-</section>
+    <section class="section prices" id="prices">
+      <div class="section-head">
+        <p class="eyebrow">Ориентиры</p>
+        <h2>Стоимость аренды</h2>
+        <p>Цены вынесены как ориентиры из открытой карточки. Перед публикацией владельцу стоит подтвердить актуальность.</p>
+      </div>
+      <div class="price-table">
+        <div><span>Большая 2-х этажная баня</span><b>2 000 ₽/час</b></div>
+        <div><span>VIP-баня с бассейном</span><b>2 500 ₽/час</b></div>
+        <div><span>Средняя одноэтажная баня</span><b>1 000 ₽/час</b></div>
+        <div><span>Акции и пакетные условия</span><b>уточнить</b></div>
+      </div>
+    </section>
 
-<section class="sec" id="gallery">
-<div class="st">Фотогалерея</div>
-<h2>Атмосфера комплекса</h2>
-<p class="sd">Реальные фотографии зон отдыха</p>
-<div class="gg">
-<figure><img src="./assets/images/real-12.jpg" alt="" loading="lazy"></figure>
-<figure><img src="./assets/images/real-14.jpg" alt="" loading="lazy"></figure>
-<figure><img src="./assets/images/real-10.jpg" alt="" loading="lazy"></figure>
-</div>
-<a class="btn btn-gh" href="#services" style="width:100%;text-align:center">Смотреть все</a>
-</section>
+    <section class="section booking" id="booking">
+      <div class="booking-copy">
+        <p class="eyebrow">Заявка</p>
+        <h2>Забронировать отдых</h2>
+        <p>Форма не отправляет данные на сервер: для реального запуска нужно подключить CRM, Telegram-бота, почту или форму GitHub Pages через сторонний сервис.</p>
+      </div>
+      <form class="booking-form" data-form>
+        <label>Объект<select name="object" required><option value="">Выберите объект</option><option>Большая двухэтажная баня</option><option>VIP-баня с бассейном</option><option>Средняя одноэтажная баня</option><option>Веранда и мангальная зона</option></select></label>
+        <label>Дата<input type="date" name="date" required></label>
+        <label>Время<input type="time" name="time" required></label>
+        <label>Гости<input type="number" name="guests" min="1" placeholder="Например, 8" required></label>
+        <label>Имя<input type="text" name="name" placeholder="Ваше имя" required></label>
+        <label>Телефон<input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></label>
+        <label class="full">Комментарий<textarea name="comment" placeholder="Пожелания, повод, вопросы"></textarea></label>
+        <button class="btn btn-primary full" type="submit">Отправить заявку</button>
+        <p class="form-note" data-form-note>После отправки появится подтверждение на экране.</p>
+      </form>
+    </section>
 
-<section class="sec" style="padding-top:0">
-<div class="cta">
-<h2>Готовы отдохнуть<br>по-королевски?</h2>
-<p>Забронируйте удобное время и наслаждайтесь отдыхом</p>
-<a class="btn btn-bl" href="#booking">Забронировать</a>
-</div>
-</section>
+    <section class="section contacts" id="contacts">
+      <div>
+        <p class="eyebrow">Контакты</p>
+        <h2>Данные для финального согласования</h2>
+        <p>Адрес, телефон, мессенджеры и юридические данные не добавлены от себя. Их нужно заменить на подтверждённые владельцем перед запуском рекламы.</p>
+      </div>
+      <div class="contact-card">
+        <p><span>Телефон</span><b>уточнить у владельца</b></p>
+        <p><span>Адрес</span><b>уточнить у владельца</b></p>
+        <p><span>Режим работы</span><b>уточнить у владельца</b></p>
+      </div>
+    </section>
+  </main>
 
-<section class="sec" id="booking">
-<div class="st">Бронирование</div>
-<h2>Забронируйте отдых</h2>
-<p class="sd">Оставьте заявку — мы свяжемся для подтверждения</p>
-<div class="fw" id="formContainer">
-<h3>Форма бронирования</h3>
-<p class="fs">Заполните данные — мы подберём лучший вариант</p>
-<form id="bookingForm" class="fg">
-<label>Объект<select id="bookObject" required><option value="">Выберите объект</option><option>Бани на дровах</option><option>Бассейны и купели</option><option>Комнаты отдыха</option><option>Дополнительные услуги</option></select></label>
-<label>Дата<input type="date" id="bookDate" required></label>
-<label>Время<input type="time" id="bookTime" value="14:00"></label>
-<label>Гости<input type="number" min="1" placeholder="Например, 6" required></label>
-<label>Имя<input type="text" placeholder="Ваше имя" required></label>
-<label>Телефон<input type="tel" placeholder="+7 (999) 999-99-99" required></label>
-<label>Комментарий<textarea placeholder="Пожелания, повод, вопросы"></textarea></label>
-<button class="btn btn-g" type="submit" style="width:100%;margin-top:6px;padding:14px">Забронировать</button>
-</form>
-<div class="bs" id="bookingSuccess" style="display:none;text-align:center;padding:24px">
-<div style="width:50px;height:50px;margin:0 auto 12px;border-radius:50%;border:2px solid #d4b96a;color:#d4b96a;font-size:24px;display:flex;align-items:center;justify-content:center">✓</div>
-<h4 style="font-size:18px;color:#d4b96a;margin-bottom:4px">Заявка отправлена</h4>
-<p style="color:rgba(229,224,216,.5);font-size:13px">Мы свяжемся с вами для подтверждения бронирования.</p>
-</div>
-</div>
-</section>
+  <dialog class="modal" data-modal>
+    <button class="modal-close" type="button" data-modal-close aria-label="Закрыть">×</button>
+    <img data-modal-img src="./assets/images/real-08.jpg" alt="">
+    <div class="modal-body">
+      <p class="tag" data-modal-tag></p>
+      <h2 data-modal-title></h2>
+      <p data-modal-text></p>
+      <ul data-modal-list></ul>
+      <a class="btn btn-primary" href="#booking" data-modal-book>Забронировать</a>
+    </div>
+  </dialog>
 
-<section class="contacts" id="contacts">
-<div class="st">Контакты</div>
-<h2 style="font-size:24px;font-weight:600;margin-bottom:20px;font-family:'Montserrat',sans-serif">Как нас найти</h2>
-<div class="ct"><div class="ci">✆</div><div><h4>Телефон</h4><p><a href="tel:+79141594441">+7 (914) 159-44-41</a></p></div></div>
-<div class="ct"><div class="ci">📍</div><div><h4>Адрес</h4><p>г. Королёв, ул. Банная, 1</p></div></div>
-<div class="ct"><div class="ci">🕐</div><div><h4>Режим работы</h4><p>Ежедневно 10:00 – 23:00</p></div></div>
-<div class="ct"><div class="ci">✉</div><div><h4>Мессенджеры</h4><div class="social"><a href="#">📱</a><a href="#">📷</a><a href="#">💬</a></div></div></div>
-</section>
+  <footer class="footer">
+    <p>© 2026 Королевские бани. Коммерческая концепция сайта.</p>
+    <p>Фото сохранены локально в проекте. Данные для публикации требуют финального подтверждения владельца.</p>
+  </footer>
 
-<footer class="ft">
-<p>© 2026 Королевские бани. Премиальная банная резиденция.</p>
-</footer>
-
-<script>
-const h=document.getElementById('header');
-window.addEventListener('scroll',()=>h.classList.toggle('scrolled',window.scrollY>50));
-const hb=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu');
-hb.addEventListener('click',()=>{hb.classList.toggle('active');mm.classList.toggle('open');document.body.style.overflow=mm.classList.contains('open')?'hidden':''});
-document.querySelectorAll('.mm a').forEach(a=>a.addEventListener('click',()=>{hb.classList.remove('active');mm.classList.remove('open');document.body.style.overflow=''}));
-new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vi')}),{threshold:.1})document.querySelectorAll('.rv').forEach(el=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vi')}),{threshold:.1}).observe(el));
-document.getElementById('bookingForm').addEventListener('submit',function(e){e.preventDefault();document.getElementById('formContainer').querySelector('.fg').style.display='none';document.getElementById('bookingSuccess').style.display='block'});
-document.getElementById('bookDate').setAttribute('min',new Date().toISOString().split('T')[0]);
-</script>
+  <script src="./script.js"></script>
 </body>
 </html>
